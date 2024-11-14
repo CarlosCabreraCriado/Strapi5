@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "direcciones",
+  "info": {
+    "singularName": "direccion",
+    "pluralName": "direcciones",
+    "displayName": "Direcciones"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "clientes": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cliente.cliente"
+    },
+    "direccion": {
+      "type": "text"
+    },
+    "ciudad": {
+      "type": "string"
+    },
+    "cod_postal": {
+      "type": "string"
+    },
+    "pais": {
+      "type": "string"
+    }
+  }
+}

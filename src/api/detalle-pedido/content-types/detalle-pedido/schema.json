@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "detalles_pedidos",
+  "info": {
+    "singularName": "detalle-pedido",
+    "pluralName": "detalles-pedidos",
+    "displayName": "Detalles Pedidos"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pedido": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pedido.pedido"
+    },
+    "producto": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::producto.producto"
+    },
+    "cantidad": {
+      "type": "integer"
+    },
+    "precio_unitario": {
+      "type": "decimal"
+    }
+  }
+}

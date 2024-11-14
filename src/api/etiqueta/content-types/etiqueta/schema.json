@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "etiquetas",
+  "info": {
+    "singularName": "etiqueta",
+    "pluralName": "etiquetas",
+    "displayName": "Etiquetas",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "productos": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::producto.producto",
+      "inversedBy": "etiquetas"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "productos",
+  "info": {
+    "singularName": "producto",
+    "pluralName": "productos",
+    "displayName": "Productos",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "text"
+    },
+    "precio": {
+      "type": "decimal"
+    },
+    "stock": {
+      "type": "integer"
+    },
+    "imagenes": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "SKU": {
+      "type": "string"
+    },
+    "fecha_creacion": {
+      "type": "datetime"
+    },
+    "estado": {
+      "type": "enumeration",
+      "enum": [
+        "Publicado",
+        "Borrador",
+        "Interno"
+      ]
+    },
+    "etiquetas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::etiqueta.etiqueta",
+      "mappedBy": "productos"
+    },
+    "categorias": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::categoria.categoria",
+      "mappedBy": "productos"
+    },
+    "regalo": {
+      "type": "boolean"
+    },
+    "parche": {
+      "type": "boolean"
+    },
+    "personalizacion": {
+      "type": "boolean"
+    }
+  }
+}

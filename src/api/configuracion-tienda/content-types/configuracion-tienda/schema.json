@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "configuracion_tiendas",
+  "info": {
+    "singularName": "configuracion-tienda",
+    "pluralName": "configuracion-tiendas",
+    "displayName": "configuracion_tienda"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "terminos_condiciones": {
+      "type": "text"
+    },
+    "politica_devoluciones": {
+      "type": "text"
+    },
+    "coste_peninsula": {
+      "type": "decimal"
+    },
+    "coste_canarias": {
+      "type": "decimal"
+    }
+  }
+}

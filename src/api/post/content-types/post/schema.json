@@ -1,0 +1,118 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "Post",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "post_content": {
+      "type": "text"
+    },
+    "post_author": {
+      "type": "biginteger",
+      "unique": false,
+      "default": "0"
+    },
+    "post_date": {
+      "type": "datetime"
+    },
+    "post_title": {
+      "type": "string"
+    },
+    "post_status": {
+      "type": "string",
+      "default": "publish"
+    },
+    "post_name": {
+      "type": "string",
+      "default": "\""
+    },
+    "last_modification": {
+      "type": "datetime"
+    },
+    "post_date_gmt": {
+      "type": "datetime"
+    },
+    "post_excerpt": {
+      "type": "string"
+    },
+    "comment_status": {
+      "type": "string",
+      "default": "open"
+    },
+    "ping_status": {
+      "type": "string",
+      "default": "open"
+    },
+    "post_password": {
+      "type": "string",
+      "default": "\""
+    },
+    "to_ping": {
+      "type": "string"
+    },
+    "pinged": {
+      "type": "string"
+    },
+    "post_modified": {
+      "type": "datetime"
+    },
+    "post_content_filtered": {
+      "type": "text"
+    },
+    "post_parent": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "guid": {
+      "type": "string"
+    },
+    "menu_order": {
+      "type": "integer",
+      "default": 0
+    },
+    "post_type": {
+      "type": "string",
+      "default": "post"
+    },
+    "post_mime_type": {
+      "type": "string",
+      "default": "\""
+    },
+    "comment_count": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "post_modified_gmt": {
+      "type": "datetime"
+    },
+    "post_id": {
+      "type": "biginteger"
+    },
+    "imagenes": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "post_name"
+    },
+    "contenido": {
+      "type": "blocks"
+    }
+  }
+}
