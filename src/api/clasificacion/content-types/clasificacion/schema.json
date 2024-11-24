@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "clasificaciones",
+  "info": {
+    "singularName": "clasificacion",
+    "pluralName": "clasificaciones",
+    "displayName": "Clasificacion"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "equipo": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::equipo.equipo",
+      "inversedBy": "clasificacion"
+    },
+    "puntos": {
+      "type": "integer"
+    },
+    "posicion": {
+      "type": "integer"
+    }
+  }
+}

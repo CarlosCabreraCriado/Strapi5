@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "resultados",
+  "info": {
+    "singularName": "resultado",
+    "pluralName": "resultados",
+    "displayName": "Resultados",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Jornada": {
+      "type": "integer"
+    },
+    "Temporada": {
+      "type": "string",
+      "default": "2024 / 2025"
+    },
+    "Resultado_Visitante": {
+      "type": "integer"
+    },
+    "Resultado_Local": {
+      "type": "integer"
+    },
+    "Equipo_Local": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::equipo.equipo"
+    },
+    "Equipo_Visitante": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::equipo.equipo"
+    },
+    "Fecha_Partido": {
+      "type": "datetime"
+    }
+  }
+}

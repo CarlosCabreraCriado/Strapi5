@@ -530,6 +530,37 @@ export interface ApiCategoriaCategoria extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiClasificacionClasificacion
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'clasificaciones';
+  info: {
+    singularName: 'clasificacion';
+    pluralName: 'clasificaciones';
+    displayName: 'Clasificacion';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    equipo: Schema.Attribute.Relation<'oneToOne', 'api::equipo.equipo'>;
+    puntos: Schema.Attribute.Integer;
+    posicion: Schema.Attribute.Integer;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::clasificacion.clasificacion'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiClienteCliente extends Struct.CollectionTypeSchema {
   collectionName: 'clientes';
   info: {
@@ -657,6 +688,39 @@ export interface ApiDireccionDireccion extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::direccion.direccion'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiEquipoEquipo extends Struct.CollectionTypeSchema {
+  collectionName: 'equipos';
+  info: {
+    singularName: 'equipo';
+    pluralName: 'equipos';
+    displayName: 'Equipos';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nombre: Schema.Attribute.String;
+    escudo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    clasificacion: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::clasificacion.clasificacion'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::equipo.equipo'
     > &
       Schema.Attribute.Private;
   };
@@ -833,6 +897,45 @@ export interface ApiProductoProducto extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::producto.producto'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiResultadoResultado extends Struct.CollectionTypeSchema {
+  collectionName: 'resultados';
+  info: {
+    singularName: 'resultado';
+    pluralName: 'resultados';
+    displayName: 'Resultados';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Jornada: Schema.Attribute.Integer;
+    Temporada: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'2024 / 2025'>;
+    Resultado_Visitante: Schema.Attribute.Integer;
+    Resultado_Local: Schema.Attribute.Integer;
+    Equipo_Local: Schema.Attribute.Relation<'oneToOne', 'api::equipo.equipo'>;
+    Equipo_Visitante: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::equipo.equipo'
+    >;
+    Fecha_Partido: Schema.Attribute.DateTime;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::resultado.resultado'
     > &
       Schema.Attribute.Private;
   };
@@ -1221,14 +1324,17 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::categoria.categoria': ApiCategoriaCategoria;
+      'api::clasificacion.clasificacion': ApiClasificacionClasificacion;
       'api::cliente.cliente': ApiClienteCliente;
       'api::configuracion-tienda.configuracion-tienda': ApiConfiguracionTiendaConfiguracionTienda;
       'api::detalle-pedido.detalle-pedido': ApiDetallePedidoDetallePedido;
       'api::direccion.direccion': ApiDireccionDireccion;
+      'api::equipo.equipo': ApiEquipoEquipo;
       'api::etiqueta.etiqueta': ApiEtiquetaEtiqueta;
       'api::pedido.pedido': ApiPedidoPedido;
       'api::post.post': ApiPostPost;
       'api::producto.producto': ApiProductoProducto;
+      'api::resultado.resultado': ApiResultadoResultado;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;
