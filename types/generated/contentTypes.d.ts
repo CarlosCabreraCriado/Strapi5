@@ -495,6 +495,39 @@ export interface PluginUsersPermissionsUser
   };
 }
 
+export interface ApiBannerBanner extends Struct.CollectionTypeSchema {
+  collectionName: 'banners';
+  info: {
+    singularName: 'banner';
+    pluralName: 'banners';
+    displayName: 'Banner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Titulo: Schema.Attribute.String;
+    Activo: Schema.Attribute.Boolean;
+    url_redireccion: Schema.Attribute.String;
+    imagen_principal: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::banner.banner'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCategoriaCategoria extends Struct.CollectionTypeSchema {
   collectionName: 'categorias';
   info: {
@@ -688,6 +721,36 @@ export interface ApiDireccionDireccion extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::direccion.direccion'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiEntradaEntrada extends Struct.SingleTypeSchema {
+  collectionName: 'entradas';
+  info: {
+    singularName: 'entrada';
+    pluralName: 'entradas';
+    displayName: 'Entradas';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Titulo: Schema.Attribute.String;
+    URL_compra_entradas: Schema.Attribute.String;
+    imagen: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::entrada.entrada'
     > &
       Schema.Attribute.Private;
   };
@@ -1323,12 +1386,14 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::banner.banner': ApiBannerBanner;
       'api::categoria.categoria': ApiCategoriaCategoria;
       'api::clasificacion.clasificacion': ApiClasificacionClasificacion;
       'api::cliente.cliente': ApiClienteCliente;
       'api::configuracion-tienda.configuracion-tienda': ApiConfiguracionTiendaConfiguracionTienda;
       'api::detalle-pedido.detalle-pedido': ApiDetallePedidoDetallePedido;
       'api::direccion.direccion': ApiDireccionDireccion;
+      'api::entrada.entrada': ApiEntradaEntrada;
       'api::equipo.equipo': ApiEquipoEquipo;
       'api::etiqueta.etiqueta': ApiEtiquetaEtiqueta;
       'api::pedido.pedido': ApiPedidoPedido;
