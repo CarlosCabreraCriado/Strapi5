@@ -4,7 +4,8 @@
   "info": {
     "singularName": "clasificacion",
     "pluralName": "clasificaciones",
-    "displayName": "Clasificacion"
+    "displayName": "Clasificacion",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -21,6 +22,27 @@
       "type": "integer"
     },
     "posicion": {
+      "type": "integer"
+    },
+    "partidos_jugados": {
+      "type": "integer"
+    },
+    "partidos_ganados": {
+      "type": "integer"
+    },
+    "partidos_empatados": {
+      "type": "integer"
+    },
+    "partidos_perdidos": {
+      "type": "integer"
+    },
+    "goles_a_favor": {
+      "type": "integer"
+    },
+    "goles_en_contra": {
+      "type": "integer"
+    },
+    "diferencia_de_goles": {
       "type": "integer"
     }
   }

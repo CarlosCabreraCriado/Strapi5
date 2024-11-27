@@ -501,6 +501,7 @@ export interface ApiBannerBanner extends Struct.CollectionTypeSchema {
     singularName: 'banner';
     pluralName: 'banners';
     displayName: 'Banner';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -512,6 +513,7 @@ export interface ApiBannerBanner extends Struct.CollectionTypeSchema {
     imagen_principal: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
+    orden: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -533,7 +535,7 @@ export interface ApiCategoriaCategoria extends Struct.CollectionTypeSchema {
   info: {
     singularName: 'categoria';
     pluralName: 'categorias';
-    displayName: 'Categorias';
+    displayName: 'Categorias Tienda';
     description: '';
   };
   options: {
@@ -563,6 +565,35 @@ export interface ApiCategoriaCategoria extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCategoriaPostCategoriaPost
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'categorias_posts';
+  info: {
+    singularName: 'categoria-post';
+    pluralName: 'categorias-posts';
+    displayName: 'Categorias Posts';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nombre_categoria: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::categoria-post.categoria-post'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiClasificacionClasificacion
   extends Struct.CollectionTypeSchema {
   collectionName: 'clasificaciones';
@@ -570,6 +601,7 @@ export interface ApiClasificacionClasificacion
     singularName: 'clasificacion';
     pluralName: 'clasificaciones';
     displayName: 'Clasificacion';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -578,6 +610,13 @@ export interface ApiClasificacionClasificacion
     equipo: Schema.Attribute.Relation<'oneToOne', 'api::equipo.equipo'>;
     puntos: Schema.Attribute.Integer;
     posicion: Schema.Attribute.Integer;
+    partidos_jugados: Schema.Attribute.Integer;
+    partidos_ganados: Schema.Attribute.Integer;
+    partidos_empatados: Schema.Attribute.Integer;
+    partidos_perdidos: Schema.Attribute.Integer;
+    goles_a_favor: Schema.Attribute.Integer;
+    goles_en_contra: Schema.Attribute.Integer;
+    diferencia_de_goles: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -902,6 +941,10 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
     >;
     slug: Schema.Attribute.UID<'post_name'>;
     contenido: Schema.Attribute.Blocks;
+    categorias_posts: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::categoria-post.categoria-post'
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -1388,6 +1431,7 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::banner.banner': ApiBannerBanner;
       'api::categoria.categoria': ApiCategoriaCategoria;
+      'api::categoria-post.categoria-post': ApiCategoriaPostCategoriaPost;
       'api::clasificacion.clasificacion': ApiClasificacionClasificacion;
       'api::cliente.cliente': ApiClienteCliente;
       'api::configuracion-tienda.configuracion-tienda': ApiConfiguracionTiendaConfiguracionTienda;

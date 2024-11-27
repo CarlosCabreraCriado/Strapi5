@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categorias_posts",
+  "info": {
+    "singularName": "categoria-post",
+    "pluralName": "categorias-posts",
+    "displayName": "Categorias Posts"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre_categoria": {
+      "type": "string"
+    }
+  }
+}

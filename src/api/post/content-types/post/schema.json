@@ -113,6 +113,11 @@
     },
     "contenido": {
       "type": "blocks"
+    },
+    "categorias_posts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::categoria-post.categoria-post"
     }
   }
 }
