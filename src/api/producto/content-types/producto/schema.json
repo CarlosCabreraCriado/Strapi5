@@ -69,6 +69,48 @@
     },
     "personalizacion": {
       "type": "boolean"
+    },
+    "stock_104": {
+      "type": "integer"
+    },
+    "stock_116": {
+      "type": "integer"
+    },
+    "stock_128": {
+      "type": "integer"
+    },
+    "stock_140": {
+      "type": "integer"
+    },
+    "stock_152": {
+      "type": "integer"
+    },
+    "stock_164": {
+      "type": "integer"
+    },
+    "stock_xs": {
+      "type": "integer"
+    },
+    "stock_s": {
+      "type": "integer"
+    },
+    "stock_m": {
+      "type": "integer"
+    },
+    "stock_l": {
+      "type": "integer"
+    },
+    "stock_xl": {
+      "type": "integer"
+    },
+    "stock_2xl": {
+      "type": "integer"
+    },
+    "stock_3xl": {
+      "type": "integer"
+    },
+    "stock_4xl": {
+      "type": "integer"
     }
   }
 }
