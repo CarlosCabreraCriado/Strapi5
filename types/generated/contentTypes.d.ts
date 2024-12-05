@@ -1061,6 +1061,45 @@ export interface ApiResultadoResultado extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiTirmaExperienceTirmaExperience
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'tirma_experiences';
+  info: {
+    singularName: 'tirma-experience';
+    pluralName: 'tirma-experiences';
+    displayName: 'Tirma-Experience';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Fecha: Schema.Attribute.DateTime;
+    nombre_menor: Schema.Attribute.String & Schema.Attribute.Required;
+    edad_menor: Schema.Attribute.Integer & Schema.Attribute.Required;
+    dni_menor: Schema.Attribute.String & Schema.Attribute.Required;
+    nombre_acompanante: Schema.Attribute.String & Schema.Attribute.Required;
+    edad_acompanante: Schema.Attribute.Integer & Schema.Attribute.Required;
+    dni_acompanante: Schema.Attribute.String & Schema.Attribute.Required;
+    email_acompanante: Schema.Attribute.Email & Schema.Attribute.Required;
+    telefono_acompanante: Schema.Attribute.String & Schema.Attribute.Required;
+    archivo_consentimiento: Schema.Attribute.Media<'files'> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tirma-experience.tirma-experience'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface AdminPermission extends Struct.CollectionTypeSchema {
   collectionName: 'admin_permissions';
   info: {
@@ -1458,6 +1497,7 @@ declare module '@strapi/strapi' {
       'api::post.post': ApiPostPost;
       'api::producto.producto': ApiProductoProducto;
       'api::resultado.resultado': ApiResultadoResultado;
+      'api::tirma-experience.tirma-experience': ApiTirmaExperienceTirmaExperience;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;

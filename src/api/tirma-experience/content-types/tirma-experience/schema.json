@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tirma_experiences",
+  "info": {
+    "singularName": "tirma-experience",
+    "pluralName": "tirma-experiences",
+    "displayName": "Tirma-Experience"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Fecha": {
+      "type": "datetime"
+    },
+    "nombre_menor": {
+      "type": "string",
+      "required": true
+    },
+    "edad_menor": {
+      "type": "integer",
+      "required": true
+    },
+    "dni_menor": {
+      "type": "string",
+      "required": true
+    },
+    "nombre_acompanante": {
+      "type": "string",
+      "required": true
+    },
+    "edad_acompanante": {
+      "type": "integer",
+      "required": true
+    },
+    "dni_acompanante": {
+      "type": "string",
+      "required": true
+    },
+    "email_acompanante": {
+      "type": "email",
+      "required": true
+    },
+    "telefono_acompanante": {
+      "type": "string",
+      "required": true
+    },
+    "archivo_consentimiento": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}
