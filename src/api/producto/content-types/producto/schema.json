@@ -13,16 +13,23 @@
   "pluginOptions": {},
   "attributes": {
     "nombre": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "descripcion": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "precio": {
-      "type": "decimal"
+      "type": "decimal",
+      "required": true,
+      "min": 1
     },
-    "stock": {
-      "type": "integer"
+    "stock_general": {
+      "type": "integer",
+      "default": 0,
+      "required": false,
+      "min": 0
     },
     "imagenes": {
       "type": "media",
@@ -47,7 +54,9 @@
         "Publicado",
         "Borrador",
         "Interno"
-      ]
+      ],
+      "required": true,
+      "default": "Interno"
     },
     "etiquetas": {
       "type": "relation",
@@ -62,55 +71,132 @@
       "mappedBy": "productos"
     },
     "regalo": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": true
     },
     "parche": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": true
     },
     "personalizacion": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": true
     },
     "stock_104": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "min": 0
     },
     "stock_116": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "min": 0
     },
     "stock_128": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "min": 0
     },
     "stock_140": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "min": 0
     },
     "stock_152": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "min": 0
     },
     "stock_164": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "min": 0
     },
     "stock_xs": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "min": 0
     },
     "stock_s": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "min": 0
     },
     "stock_m": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "min": 0
     },
     "stock_l": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "min": 0
     },
     "stock_xl": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "min": 0
     },
     "stock_2xl": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "min": 0
     },
     "stock_3xl": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "min": 0
     },
     "stock_4xl": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "min": 0,
+      "required": true
+    },
+    "imagen_portada": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Temporada": {
+      "type": "enumeration",
+      "enum": [
+        "Temporada 2024 / 2025",
+        "Temporada 2023 / 2024",
+        "Temporada 2022 / 2023"
+      ],
+      "required": true,
+      "default": "Temporada 2024 / 2025"
+    },
+    "stock": {
+      "type": "dynamiczone",
+      "components": [
+        "sin-tallas.sin-tallas",
+        "tallas-ropa.corte-unisex",
+        "tallas-ropa.corte-masculino",
+        "tallas-ropa.corte-femenino"
+      ],
+      "required": true,
+      "min": 1
     }
   }
 }

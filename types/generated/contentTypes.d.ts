@@ -970,17 +970,33 @@ export interface ApiProductoProducto extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    nombre: Schema.Attribute.String;
-    descripcion: Schema.Attribute.Text;
-    precio: Schema.Attribute.Decimal;
-    stock: Schema.Attribute.Integer;
+    nombre: Schema.Attribute.String & Schema.Attribute.Required;
+    descripcion: Schema.Attribute.Text & Schema.Attribute.Required;
+    precio: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    stock_general: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
     imagenes: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
     SKU: Schema.Attribute.String;
     fecha_creacion: Schema.Attribute.DateTime;
-    estado: Schema.Attribute.Enumeration<['Publicado', 'Borrador', 'Interno']>;
+    estado: Schema.Attribute.Enumeration<['Publicado', 'Borrador', 'Interno']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Interno'>;
     etiquetas: Schema.Attribute.Relation<
       'manyToMany',
       'api::etiqueta.etiqueta'
@@ -989,23 +1005,162 @@ export interface ApiProductoProducto extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::categoria.categoria'
     >;
-    regalo: Schema.Attribute.Boolean;
-    parche: Schema.Attribute.Boolean;
-    personalizacion: Schema.Attribute.Boolean;
-    stock_104: Schema.Attribute.Integer;
-    stock_116: Schema.Attribute.Integer;
-    stock_128: Schema.Attribute.Integer;
-    stock_140: Schema.Attribute.Integer;
-    stock_152: Schema.Attribute.Integer;
-    stock_164: Schema.Attribute.Integer;
-    stock_xs: Schema.Attribute.Integer;
-    stock_s: Schema.Attribute.Integer;
-    stock_m: Schema.Attribute.Integer;
-    stock_l: Schema.Attribute.Integer;
-    stock_xl: Schema.Attribute.Integer;
-    stock_2xl: Schema.Attribute.Integer;
-    stock_3xl: Schema.Attribute.Integer;
-    stock_4xl: Schema.Attribute.Integer;
+    regalo: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    parche: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    personalizacion: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    stock_104: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    stock_116: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    stock_128: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    stock_140: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    stock_152: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    stock_164: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    stock_xs: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    stock_s: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    stock_m: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    stock_l: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    stock_xl: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    stock_2xl: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    stock_3xl: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    stock_4xl: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    imagen_portada: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    Temporada: Schema.Attribute.Enumeration<
+      [
+        'Temporada 2024 / 2025',
+        'Temporada 2023 / 2024',
+        'Temporada 2022 / 2023',
+      ]
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Temporada 2024 / 2025'>;
+    stock: Schema.Attribute.DynamicZone<
+      [
+        'sin-tallas.sin-tallas',
+        'tallas-ropa.corte-unisex',
+        'tallas-ropa.corte-masculino',
+        'tallas-ropa.corte-femenino',
+      ]
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sin_tallas_sin_tallas",
+  "info": {
+    "displayName": "Sin tallas",
+    "icon": "shoppingCart"
+  },
+  "options": {},
+  "attributes": {
+    "stock": {
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "min": 0
+    }
+  }
+}
