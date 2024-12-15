@@ -1005,9 +1005,9 @@ export interface ApiProductoProducto extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::categoria.categoria'
     >;
-    regalo: Schema.Attribute.Boolean & Schema.Attribute.Required;
-    parche: Schema.Attribute.Boolean & Schema.Attribute.Required;
-    personalizacion: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    regalo: Schema.Attribute.Boolean;
+    parche: Schema.Attribute.Boolean;
+    personalizacion: Schema.Attribute.Boolean;
     stock_104: Schema.Attribute.Integer &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<

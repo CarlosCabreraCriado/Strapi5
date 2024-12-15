@@ -72,15 +72,15 @@
     },
     "regalo": {
       "type": "boolean",
-      "required": true
+      "required": false
     },
     "parche": {
       "type": "boolean",
-      "required": true
+      "required": false
     },
     "personalizacion": {
       "type": "boolean",
-      "required": true
+      "required": false
     },
     "stock_104": {
       "type": "integer",
