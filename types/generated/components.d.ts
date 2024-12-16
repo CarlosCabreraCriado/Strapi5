@@ -1,24 +1,5 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
-export interface SinTallasSinTallas extends Struct.ComponentSchema {
-  collectionName: 'components_sin_tallas_sin_tallas';
-  info: {
-    displayName: 'Sin tallas';
-    icon: 'shoppingCart';
-  };
-  attributes: {
-    stock: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 0;
-        },
-        number
-      > &
-      Schema.Attribute.DefaultTo<0>;
-  };
-}
-
 export interface TallasRopaCorteUnisex extends Struct.ComponentSchema {
   collectionName: 'components_tallas_ropa_corte_unisexes';
   info: {
@@ -430,13 +411,32 @@ export interface TallasRopaCorteFemenino extends Struct.ComponentSchema {
   };
 }
 
+export interface SinTallasSinTallas extends Struct.ComponentSchema {
+  collectionName: 'components_sin_tallas_sin_tallas';
+  info: {
+    displayName: 'Sin tallas';
+    icon: 'shoppingCart';
+  };
+  attributes: {
+    stock: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'sin-tallas.sin-tallas': SinTallasSinTallas;
       'tallas-ropa.corte-unisex': TallasRopaCorteUnisex;
       'tallas-ropa.corte-masculino': TallasRopaCorteMasculino;
       'tallas-ropa.corte-femenino': TallasRopaCorteFemenino;
+      'sin-tallas.sin-tallas': SinTallasSinTallas;
     }
   }
 }
