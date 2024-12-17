@@ -1,5 +1,24 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
+export interface SinTallasSinTallas extends Struct.ComponentSchema {
+  collectionName: 'components_sin_tallas_sin_tallas';
+  info: {
+    displayName: 'Sin tallas';
+    icon: 'shoppingCart';
+  };
+  attributes: {
+    stock: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+  };
+}
+
 export interface TallasRopaCorteUnisex extends Struct.ComponentSchema {
   collectionName: 'components_tallas_ropa_corte_unisexes';
   info: {
@@ -411,32 +430,35 @@ export interface TallasRopaCorteFemenino extends Struct.ComponentSchema {
   };
 }
 
-export interface SinTallasSinTallas extends Struct.ComponentSchema {
-  collectionName: 'components_sin_tallas_sin_tallas';
+export interface PedidoProducto extends Struct.ComponentSchema {
+  collectionName: 'components_pedido_productos';
   info: {
-    displayName: 'Sin tallas';
+    displayName: 'producto';
     icon: 'shoppingCart';
   };
   attributes: {
-    stock: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 0;
-        },
-        number
-      > &
-      Schema.Attribute.DefaultTo<0>;
+    id_producto: Schema.Attribute.String;
+    cantidad: Schema.Attribute.Integer;
+    nombre: Schema.Attribute.String;
+    talla: Schema.Attribute.String;
+    corte: Schema.Attribute.String;
+    nombre_personalizacion: Schema.Attribute.String;
+    numero_personalizacion: Schema.Attribute.String;
+    parche: Schema.Attribute.Boolean;
+    regalo: Schema.Attribute.Boolean;
+    personalizacion: Schema.Attribute.Boolean;
+    precioUnidad: Schema.Attribute.Decimal;
   };
 }
 
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'sin-tallas.sin-tallas': SinTallasSinTallas;
       'tallas-ropa.corte-unisex': TallasRopaCorteUnisex;
       'tallas-ropa.corte-masculino': TallasRopaCorteMasculino;
       'tallas-ropa.corte-femenino': TallasRopaCorteFemenino;
-      'sin-tallas.sin-tallas': SinTallasSinTallas;
+      'pedido.producto': PedidoProducto;
     }
   }
 }

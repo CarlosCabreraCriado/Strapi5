@@ -4,21 +4,14 @@
   "info": {
     "singularName": "pedido",
     "pluralName": "pedidos",
-    "displayName": "Pedidos"
+    "displayName": "Pedidos",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "id_pedido": {
-      "type": "uid"
-    },
-    "cliente": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::cliente.cliente"
-    },
     "estado": {
       "type": "enumeration",
       "enum": [
@@ -37,6 +30,46 @@
     },
     "total": {
       "type": "decimal"
+    },
+    "nombre_cliente": {
+      "type": "string",
+      "required": true
+    },
+    "apellidos_cliente": {
+      "type": "string",
+      "required": true
+    },
+    "email_cliente": {
+      "type": "email",
+      "required": true
+    },
+    "cod_postal_cliente": {
+      "type": "string"
+    },
+    "direccion": {
+      "type": "string"
+    },
+    "nota": {
+      "type": "text"
+    },
+    "telefono_cliente": {
+      "type": "string"
+    },
+    "provincia_cliente": {
+      "type": "string"
+    },
+    "Productos": {
+      "type": "component",
+      "repeatable": true,
+      "component": "pedido.producto"
+    },
+    "estado_pago": {
+      "type": "enumeration",
+      "enum": [
+        "Sin pagar",
+        "Pagado"
+      ],
+      "default": "Sin pagar"
     }
   }
 }

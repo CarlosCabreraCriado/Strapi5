@@ -867,19 +867,29 @@ export interface ApiPedidoPedido extends Struct.CollectionTypeSchema {
     singularName: 'pedido';
     pluralName: 'pedidos';
     displayName: 'Pedidos';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    id_pedido: Schema.Attribute.UID;
-    cliente: Schema.Attribute.Relation<'oneToOne', 'api::cliente.cliente'>;
     estado: Schema.Attribute.Enumeration<
       ['Pendiente', 'En proceso', 'Enviado', 'Entregado', 'Cancelado']
     >;
     fecha_pedido: Schema.Attribute.DateTime;
     fecha_envio: Schema.Attribute.DateTime;
     total: Schema.Attribute.Decimal;
+    nombre_cliente: Schema.Attribute.String & Schema.Attribute.Required;
+    apellidos_cliente: Schema.Attribute.String & Schema.Attribute.Required;
+    email_cliente: Schema.Attribute.Email & Schema.Attribute.Required;
+    cod_postal_cliente: Schema.Attribute.String;
+    direccion: Schema.Attribute.String;
+    nota: Schema.Attribute.Text;
+    telefono_cliente: Schema.Attribute.String;
+    provincia_cliente: Schema.Attribute.String;
+    Productos: Schema.Attribute.Component<'pedido.producto', true>;
+    estado_pago: Schema.Attribute.Enumeration<['Sin pagar', 'Pagado']> &
+      Schema.Attribute.DefaultTo<'Sin pagar'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

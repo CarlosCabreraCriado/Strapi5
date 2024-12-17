@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_pedido_productos",
+  "info": {
+    "displayName": "producto",
+    "icon": "shoppingCart"
+  },
+  "options": {},
+  "attributes": {
+    "id_producto": {
+      "type": "string"
+    },
+    "cantidad": {
+      "type": "integer"
+    },
+    "nombre": {
+      "type": "string"
+    },
+    "talla": {
+      "type": "string"
+    },
+    "corte": {
+      "type": "string"
+    },
+    "nombre_personalizacion": {
+      "type": "string"
+    },
+    "numero_personalizacion": {
+      "type": "string"
+    },
+    "parche": {
+      "type": "boolean"
+    },
+    "regalo": {
+      "type": "boolean"
+    },
+    "personalizacion": {
+      "type": "boolean"
+    },
+    "precioUnidad": {
+      "type": "decimal"
+    }
+  }
+}
