@@ -70,6 +70,9 @@
         "Pagado"
       ],
       "default": "Sin pagar"
+    },
+    "firma": {
+      "type": "string"
     }
   }
 }

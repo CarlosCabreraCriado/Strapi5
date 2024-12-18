@@ -890,6 +890,7 @@ export interface ApiPedidoPedido extends Struct.CollectionTypeSchema {
     Productos: Schema.Attribute.Component<'pedido.producto', true>;
     estado_pago: Schema.Attribute.Enumeration<['Sin pagar', 'Pagado']> &
       Schema.Attribute.DefaultTo<'Sin pagar'>;
+    firma: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
