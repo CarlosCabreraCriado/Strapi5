@@ -73,6 +73,9 @@
     },
     "firma": {
       "type": "string"
+    },
+    "codigo_descuento": {
+      "type": "string"
     }
   }
 }
