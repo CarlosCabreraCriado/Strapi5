@@ -861,6 +861,35 @@ export interface ApiEtiquetaEtiqueta extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiEtiquetaPostEtiquetaPost
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'etiquetas_posts';
+  info: {
+    singularName: 'etiqueta-post';
+    pluralName: 'etiquetas-posts';
+    displayName: 'Etiquetas Posts';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nombre_etiqueta: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::etiqueta-post.etiqueta-post'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPedidoPedido extends Struct.CollectionTypeSchema {
   collectionName: 'pedidos';
   info: {
@@ -951,11 +980,15 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
-    slug: Schema.Attribute.UID<'post_name'>;
+    slug: Schema.Attribute.UID<'post_title'>;
     contenido: Schema.Attribute.Blocks;
     categorias_posts: Schema.Attribute.Relation<
       'oneToMany',
       'api::categoria-post.categoria-post'
+    >;
+    etiquetas_posts: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::etiqueta-post.etiqueta-post'
     >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -1526,6 +1559,7 @@ declare module '@strapi/strapi' {
       'api::entrada.entrada': ApiEntradaEntrada;
       'api::equipo.equipo': ApiEquipoEquipo;
       'api::etiqueta.etiqueta': ApiEtiquetaEtiqueta;
+      'api::etiqueta-post.etiqueta-post': ApiEtiquetaPostEtiquetaPost;
       'api::pedido.pedido': ApiPedidoPedido;
       'api::post.post': ApiPostPost;
       'api::producto.producto': ApiProductoProducto;

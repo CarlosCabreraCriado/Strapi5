@@ -109,7 +109,7 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "post_name"
+      "targetField": "post_title"
     },
     "contenido": {
       "type": "blocks"
@@ -118,6 +118,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::categoria-post.categoria-post"
+    },
+    "etiquetas_posts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::etiqueta-post.etiqueta-post"
     }
   }
 }
