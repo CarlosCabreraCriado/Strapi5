@@ -100,12 +100,7 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "slug": {
       "type": "uid",
@@ -123,6 +118,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::etiqueta-post.etiqueta-post"
+    },
+    "publicacion_automatica": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

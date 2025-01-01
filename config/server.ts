@@ -1,4 +1,4 @@
-//import cronTasks from "./functions/cron";
+import cronTasks from "./functions/cron";
 
 export default ({ env }) => ({
   host: env("HOST", "0.0.0.0"),
@@ -9,7 +9,7 @@ export default ({ env }) => ({
   url: env("URL"),
   proxy: true,
   cron: {
-    enabled: false,
-    //tasks: cronTasks,
+    enabled: true,
+    tasks: cronTasks,
   },
 });

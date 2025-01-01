@@ -990,6 +990,9 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::etiqueta-post.etiqueta-post'
     >;
+    publicacion_automatica: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
