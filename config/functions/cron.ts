@@ -1,7 +1,5 @@
-//import { strapi } from '@strapi/strapi';
-//
 export default {
-  "*/1 * * * *": async () => {
+  "*/5 * * * *": async () => {
     const now = new Date();
 
     try {
