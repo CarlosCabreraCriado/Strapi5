@@ -76,6 +76,31 @@
     },
     "codigo_descuento": {
       "type": "string"
+    },
+    "importe_descuento": {
+      "type": "decimal",
+      "default": 0,
+      "required": true
+    },
+    "importe_transporte": {
+      "type": "decimal",
+      "default": 0,
+      "required": true
+    },
+    "importe_productos": {
+      "type": "decimal",
+      "default": 0,
+      "required": true
+    },
+    "importe_complementos": {
+      "type": "decimal",
+      "default": 0,
+      "required": true
+    },
+    "importe_impuestos": {
+      "type": "decimal",
+      "default": 0,
+      "required": true
     }
   }
 }

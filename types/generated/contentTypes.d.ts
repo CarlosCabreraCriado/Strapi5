@@ -921,6 +921,21 @@ export interface ApiPedidoPedido extends Struct.CollectionTypeSchema {
       Schema.Attribute.DefaultTo<'Sin pagar'>;
     firma: Schema.Attribute.String;
     codigo_descuento: Schema.Attribute.String;
+    importe_descuento: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<0>;
+    importe_transporte: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<0>;
+    importe_productos: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<0>;
+    importe_complementos: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<0>;
+    importe_impuestos: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<0>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
